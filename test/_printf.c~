@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	va_list list;
 	int character_printed = 0;
-	const char *string;
+	char *string;
 	char c, current_char;
 
 	if (format == NULL)
@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 		}
 		case 's':
 		{
-			string = (const char *) va_arg(list, const char *);
+			string = (char *) va_arg(list, char *);
 			while (*string != '\0')
 			{
 				putchar(*string);

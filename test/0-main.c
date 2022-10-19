@@ -1,0 +1,16 @@
+#include "main.h"
+
+/**
+ * main - test codes
+ *
+ * Return: always 0 success
+ */
+
+int main(void)
+{
+	char *strings = "Vertiges";
+	char character = 'v';
+	_printf("la programmation en c donne les %s", strings);
+	_printf("la programmation en c donne les %c", character);
+	return (0);
+}

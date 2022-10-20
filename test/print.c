@@ -3,7 +3,7 @@
 
 void _putchar(char c);
 
-int _printf(const char *format, ...)
+int print(const char *format, ...)
 {
   int i=0, character_printed = 0, j=0;
   char c;

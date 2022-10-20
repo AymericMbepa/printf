@@ -21,20 +21,21 @@ int _printf(const char *format, ...)
 	while ((current_char = *format) != '\0')
 	{
 		format++;
-		if (*format != '%')
+		if (current_char != '%')
 		{
 			putchar(current_char);
 			character_printed++;
 			continue;
 		}
 
-		switch (*format++)
+		switch (*format)
 		{
 		case 'c':
 		{
 			c = (char) va_arg(list, int);
 			putchar(c);
 			character_printed++;
+			format++;
 			break;
 		}
 		case 's':
@@ -46,6 +47,7 @@ int _printf(const char *format, ...)
 				character_printed++;
 				string++;
 			}
+			format++;
 			break;
 		}
 		}

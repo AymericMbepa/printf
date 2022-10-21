@@ -7,10 +7,6 @@
  * Return: number of characters printed
  */
 
- void _putchar(char c)
- {
- 	write(1, &c, 1);
- }
 
 int _printf(const char *format, ...)
 {
@@ -28,7 +24,7 @@ int _printf(const char *format, ...)
 		format++;
 		if (current_char != '%')
 		{
-			_putchar(current_char);
+			putchar(current_char);
 			character_printed++;
 			continue;
 		}
@@ -38,7 +34,7 @@ int _printf(const char *format, ...)
 		case 'c':
 		{
 			c = (char) va_arg(list, int);
-			_putchar(c);
+			putchar(c);
 			character_printed++;
 			format++;
 			break;
@@ -58,7 +54,7 @@ int _printf(const char *format, ...)
     case '%':
     {
       c = '%';
-			_putchar(c);
+			putchar(c);
       character_printed++;
 			format++;
 			break;

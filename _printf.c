@@ -51,14 +51,14 @@ int _printf(const char *format, ...)
 			format++;
 			break;
 		}
-    case '%':
-    {
-      c = '%';
+		case '%':
+		{
+			c = '%';
 			putchar(c);
-      character_printed++;
+			character_printed++;
 			format++;
 			break;
-    }
+		}
 		}
 	}
 	va_end(list);

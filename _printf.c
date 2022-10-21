@@ -14,6 +14,7 @@ int _printf(const char *format, ...)
 	int character_printed = 0;
 	const char *string;
 	char c, current_char;
+	int i;
 
 	if (format == NULL)
 		return (-1);
@@ -22,6 +23,13 @@ int _printf(const char *format, ...)
 	while ((current_char = *format) != '\0')
 	{
 		format++;
+		if (current_char == '\\' && *format == '%')
+		{
+			putchar('%');
+			character_printed++;
+			format++;
+			continue;
+		}
 		if (current_char != '%')
 		{
 			putchar(current_char);
@@ -56,6 +64,32 @@ int _printf(const char *format, ...)
 			c = '%';
 			putchar(c);
 			character_printed++;
+			format++;
+			break;
+		}
+		case 'd':
+		{
+			int Number = va_arg(list, int);
+			char buffer[33];
+			num_to_string(Number, buffer, 10);
+			for(i=0; buffer[i]; i++)
+			{
+				putchar(buffer[i]);
+				character_printed++;
+			}
+			format++;
+			break;
+		}
+		case 'i':
+		{
+			int Number = va_arg(list, int);
+			char buffer[33];
+			num_to_string(Number, buffer, 10);
+			for(i=0; buffer[i]; i++)
+			{
+				putchar(buffer[i]);
+				character_printed++;
+			}
 			format++;
 			break;
 		}

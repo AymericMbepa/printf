@@ -48,7 +48,7 @@ int _printf(const char *format, ...)
 			string = (const char *) va_arg(list, const char *);
 			while (*string != '\0')
 			{
-				_putchar(*string);
+				putchar(*string);
 				character_printed++;
 				string++;
 			}

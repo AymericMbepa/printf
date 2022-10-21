@@ -1,65 +1,66 @@
 #include "main.h"
 
-/**
- * _printf - function that produces output according to a format
- * @format: string to print
- *
- * Return: number of characters printed
- */
+
+void _putchar(char c);
 
 int _printf(const char *format, ...)
 {
-	va_list list;
-	int character_printed = 0;
-	const char *string;
-	char c, current_char;
+  int i=0, character_printed = 0, j=0;
+  char c;
+  const char *str;
+  va_list args;
 
-	if (format == NULL)
-		return (-1);
+  if (format == NULL)
+    return (-1);
 
-	va_start(list, format);
-	while ((current_char = *format) != '\0')
-	{
-		format++;
-		if (current_char != '%')
-		{
-			putchar(current_char);
-			character_printed++;
-			continue;
-		}
+  va_start(args, format);
 
-		switch (*format)
-		{
-		case 'c':
-		{
-			c = (char) va_arg(list, int);
-			putchar(c);
-			character_printed++;
-			format++;
-			break;
-		}
-		case 's':
-		{
-			string = (const char *) va_arg(list, const char *);
-			while (*string != '\0')
-			{
-				putchar(*string);
-				character_printed++;
-				string++;
-			}
-			format++;
-			break;
-		}
-    case '%':
+  while(format[i])
+  {
+    if (format[i] != '%')
     {
-      c = '%';
-			putchar(c);
+      _putchar(format[i]);
       character_printed++;
-			format++;
-			break;
     }
-		}
-	}
-	va_end(list);
-	return (character_printed);
+    else
+    {
+      if (format[++i] == '%')
+      {
+        _putchar(format[i]);
+        ++character_printed;
+      }
+      else
+      {
+        switch (format[i])
+        {
+          case 'c':
+          {
+            c = (char) va_arg(args, int);
+            _putchar(c);
+            character_printed++;
+            break;
+          }
+          case 's':
+          {
+            str = (const char *) va_arg(args, const char *);
+            while (str[j])
+            {
+              _putchar(str[j]);
+              character_printed++;
+      				j++;
+            }
+            break;
+          }
+        }
+      }
+    }
+    ++i;
+  }
+  va_end(args);
+  return (character_printed);
+}
+
+void _putchar(char c)
+{
+  write(1, &c, 1);
 }

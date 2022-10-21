@@ -26,6 +26,7 @@ int main(void)
 	_print("la programmation en c donne les %s.\n", strings);
 	_print("la programmation en c donne les %c.\n", character);
 	_print("le pourcentage est %% en c.\n");
+	_print("Let's try to printf a simple sentence.\n");
 	printed = _print("le pourcentage est %% en c.\n");
 	printf("%d\n", printed);
 	return (0);

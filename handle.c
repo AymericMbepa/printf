@@ -74,6 +74,60 @@ int handle(char format, va_list list)
     }
     break;
   }
+  case 'u':
+  {
+    int Number = va_arg(list, int);
+    char buffer[33];
+
+    num_to_string(Number, buffer, 10);
+    for (i = 0; buffer[i]; i++)
+    {
+      if (buffer[i] == '-')
+        continue;
+      putchar(buffer[i]);
+      character_printed++;
+    }
+    break;
+  }
+  case 'o':
+  {
+    int Number = va_arg(list, int);
+    char buffer[33];
+
+    num_to_string(Number, buffer, 8);
+    for (i = 0; buffer[i]; i++)
+    {
+      putchar(buffer[i]);
+      character_printed++;
+    }
+    break;
+  }
+  case 'x':
+  {
+    int Number = va_arg(list, int);
+    char buffer[33];
+
+    num_to_string(Number, buffer, 16);
+    for (i = 0; buffer[i]; i++)
+    {
+      putchar(buffer[i]);
+      character_printed++;
+    }
+    break;
+  }
+  case 'X':
+  {
+    int Number = va_arg(list, int);
+    char buffer[33];
+
+    num_to_string(Number, buffer, 16);
+    for (i = 0; buffer[i]; i++)
+    {
+      putchar(buffer[i]);
+      character_printed++;
+    }
+    break;
+  }
   }
   return (character_printed);
 }

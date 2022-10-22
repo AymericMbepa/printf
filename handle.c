@@ -61,6 +61,19 @@ int handle(char format, va_list list)
     }
     break;
   }
+  case 'b':
+  {
+    int Number = va_arg(list, int);
+    char buffer[33];
+
+    num_to_string(Number, buffer, 2);
+    for (i = 0; buffer[i]; i++)
+    {
+      putchar(buffer[i]);
+      character_printed++;
+    }
+    break;
+  }
   }
   return (character_printed);
 }

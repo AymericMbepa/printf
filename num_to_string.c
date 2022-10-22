@@ -26,10 +26,6 @@ char *reverse(char *buffer, int i, int j)
 
 char *num_to_string(int value, char *buffer, int base)
 {
-  if (base < 2 || base > 32)
-  {
-    return buffer;
-  }
   int n = abs(value);
 
   int i = 0;

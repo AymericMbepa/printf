@@ -12,9 +12,9 @@ int _printf(const char *format, ...)
 {
 	va_list list;
 	int character_printed = 0;
-	const char *string;
-	char c, current_char;
-	int i;
+	char current_char;
+	int printed;
+
 
 	if (format == NULL)
 		return (-1);
@@ -36,63 +36,11 @@ int _printf(const char *format, ...)
 			character_printed++;
 			continue;
 		}
-
-		switch (*format)
+		else
 		{
-		case 'c':
-		{
-			c = (char) va_arg(list, int);
-			putchar(c);
-			character_printed++;
+			printed = handle(*format, list);
+			character_printed += printed;
 			format++;
-			break;
-		}
-		case 's':
-		{
-			string = (const char *) va_arg(list, const char *);
-			while (*string != '\0')
-			{
-				putchar(*string);
-				character_printed++;
-				string++;
-			}
-			format++;
-			break;
-		}
-		case '%':
-		{
-			c = '%';
-			putchar(c);
-			character_printed++;
-			format++;
-			break;
-		}
-		case 'd':
-		{
-			int Number = va_arg(list, int);
-			char buffer[33];
-			num_to_string(Number, buffer, 10);
-			for(i=0; buffer[i]; i++)
-			{
-				putchar(buffer[i]);
-				character_printed++;
-			}
-			format++;
-			break;
-		}
-		case 'i':
-		{
-			int Number = va_arg(list, int);
-			char buffer[33];
-			num_to_string(Number, buffer, 10);
-			for(i=0; buffer[i]; i++)
-			{
-				putchar(buffer[i]);
-				character_printed++;
-			}
-			format++;
-			break;
-		}
 		}
 	}
 	va_end(list);
